@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingwa Sokoni - Data Deals & SMS Offers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007a43;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        header p {
+            margin: 5px 0;
+        }
+
+        .notice {
+            background-color: red;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .deal-card, .data-plan, .sms-plan {
+            background-color: white;
+            border: 2px solid #00a859;
+            margin: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            display: inline-block;
+            width: 200px;
+            height: 150px;
+        }
+
+        .deal-card h3, .data-plan h2, .sms-plan h2 {
+            margin-bottom: 10px;
+            color: #007a43;
+        }
+
+        .deal-card p, .data-plan p, .sms-plan p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        footer {
+            background-color: #007a43;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        button {
+            background-color: #007a43;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #00a859;
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal h2 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .modal input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .modal button {
+            background-color: #007a43;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .modal button:hover {
+            background-color: #00a859;
+        }
+
+        .close-modal {
+            display: inline-block;
+            margin-top: 10px;
+            cursor: pointer;
+            color: #007BFF;
+        }
+
+        /* Popup styling */
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .popup.success {
+            border-left: 5px solid green;
+        }
+
+        .popup.error {
+            border-left: 5px solid red;
+        }
+
+        .popup h2 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .popup p {
+            margin: 10px 0;
+        }
+
+        .close-popup {
+            display: inline-block;
+            margin-top: 10px;
+            cursor: pointer;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="notice">
+            <p>IMPORTANT NOTICE: KUNUNUA NI MARA MOJA KWA SIKU.</p>
+        </div>
+    </header>
+
+    <header>
+        <h1>Bingwa Sokoni - Safaricom Data Plans & SMS Deals</h1>
+        <p>Choose the best deals for you!</p>
+        <p>Powered by emmkashtech</p>
+    </header>
+
+    <h2>Data Deals</h2>
+    <div class="data-plan">
+        <h2>1.25GB @ KSh 55</h2>
+        <p>Valid till midnight</p>
+        <button onclick="selectDeal(55)">Select</button>
+    </div>
+    <div class="data-plan">
+        <h2>2.5GB @ KSh 300</h2>
+        <p>Valid for 7 days</p>
+        <button onclick="selectDeal(300)">Select</button>
+    </div>
+    <div class="data-plan">
+        <h2>1.5GB @ KSh 50</h2>
+        <p>Valid for 3 hours</p>
+        <button onclick="selectDeal(50)">Select</button>
+    </div>
+    <div class="data-plan">
+        <h2>350MB @ KSh 49</h2>
+        <p>Valid for 7 days</p>
+        <button onclick="selectDeal(49)">Select</button>
+    </div>
+    <div class="data-plan">
+        <h2>6GB @ KSh 700</h2>
+        <p>Valid for 7 days</p>
+        <button onclick="selectDeal(700)">Select</button>
+    </div>
+    <div class="data-plan">
+        <h2>1GB @ KSh 19</h2>
+        <p>Valid for 1 hour</p>
+        <button onclick="selectDeal(19)">Select</button>
+    </div>
+    <div class="data-plan">
+        <h2>250MBS @ KSh 20</h2>
+        <p>Valid for 24 hours</p>
+        <button onclick="selectDeal(20)">Select</button>
+    </div>
+    <div class="data-plan">
+        <h2>1GB @ KSh 99</h2>
+        <p>Valid for 24 hours</p>
+        <button onclick="selectDeal(99)">Select</button>
+    </div>
+
+    <h2>SMS Deals</h2>
+    <div class="sms-plan">
+        <h2>1000 SMS @ KSh 30</h2>
+        <p>Valid for 7 days</p>
+        <button onclick="selectDeal(30)">Select</button>
+    </div>
+    <div class="sms-plan">
+        <h2>200 SMS @ KSh 10</h2>
+        <p>Valid for 24 hours</p>
+        <button onclick="selectDeal(10)">Select</button>
+    </div>
+    <div class="sms-plan">
+        <h2>20 SMS @ KSh 5</h2>
+        <p>Valid for 24 hours</p>
+        <button onclick="selectDeal(5)">Select</button>
+    </div>
+
+    <h2>Monthly Deals</h2>
+    <div class="data-plan">
+        <h2>1.2GB @ KSh 250</h2>
+        <p>Valid for 30 days</p>
+        <button onclick="selectDeal(250)">Select</button>
+    </div>
+    <div class="data-plan">
+        <h2>2.5GB @ KSh 500</h2>
+        <p>Valid for 30 days</p>
+        <button onclick="selectDeal(500)">Select</button>
+    </div>
+    <div class="data-plan">
+        <h2>8GB+400Mins @ KSh 999</h2>
+        <p>Valid for 30 days</p>
+        <button onclick="selectDeal(999)">Select</button>
+    </div>
+    <div class="data-plan">
+        <h2>10GB @ KSh 1000</h2>
+        <p>Valid for 30 days</p>
+        <button onclick="selectDeal(1000)">Select</button>
+    </div>
+
+
+    <!-- Modal for phone number input -->
+    <div id="dealModal" class="modal">
+        <h2>Enter Your Phone Number</h2>
+        <form method="POST" action="/dataoffers/purchase/process_deal/">
+            {% csrf_token %}
+            <input type="tel" id="phone_number" name="phone_number" required placeholder="2547XXXXXXXX">
+            <input type="hidden" id="modalAmount" name="amount">
+            <br><br>
+            <button type="submit">Proceed to Pay</button>
+        </form>
+        <span class="close-modal" onclick="closeModal()">Cancel</span>
+    </div>
+
+    <!-- Success/Error Popup -->
+    <div class="popup" id="popup">
+        <h2 id="popup-title"></h2>
+        <p id="popup-message"></p>
+        <span class="close-popup" onclick="closePopup()">Close</span>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Bingwa Sokoni</p>
+    </footer>
+
+    <script>
+        function selectDeal(amount) {
+            document.getElementById('modalAmount').value = amount;
+            document.getElementById('dealModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('dealModal').style.display = 'none';
+        }
+
+        function showPopup(title, message, isSuccess) {
+            const popup = document.getElementById('popup');
+            document.getElementById('popup-title').textContent = title;
+            document.getElementById('popup-message').textContent = message;
+            popup.classList.add(isSuccess ? 'success' : 'error');
+            popup.style.display = 'block';
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'none';
+            popup.classList.remove('success', 'error');
+        }
+
+        // Show success or error popup (if exists)
+        {% if message %}
+            showPopup('Success', '{{ message }}', true);
+        {% elif error %}
+            showPopup('Error', '{{ error }}', false);
+        {% endif %}
+    </script>
+
+</body>
+</html>
